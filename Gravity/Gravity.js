@@ -3,7 +3,7 @@ var context = canvas.getContext('2d');
 
 var fallTimer;
 
-document.getElementById("start").addEventListener("click", function(){
+document.getElementById("start").addEventListener("mouseup", function(){
     fallTimer = setInterval(function() {
         context.clearRect(0, 0, canvas.width, canvas.height);
         context.beginPath();
@@ -28,7 +28,7 @@ document.getElementById("start").addEventListener("click", function(){
     },10);
 });
 
-document.getElementById("stop").addEventListener("click", function() {
+document.getElementById("stop").addEventListener("mouseup", function() {
     clearInterval(fallTimer);
 });
 
@@ -37,8 +37,8 @@ var colorCombos = "0123456789ABCDEF";
 var newCircle = 0;
 var objects = {
     number : 0,
-    centers : [], //array of locations
-    sizes : [], //how big each circle is
+    centers : [1], //array of locations
+    sizes : [3], //how big each circle is
     colors : [],
     time : 10,
     stepSize : [],
