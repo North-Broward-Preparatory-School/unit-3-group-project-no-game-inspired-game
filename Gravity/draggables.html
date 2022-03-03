@@ -82,9 +82,25 @@ function dragElement(elmnt) {
     document.onmousemove = null;
   }
 }
+this.speedX = 0;
+    this.speedY = 0;    
+    this.gravity = 1;
+    this.gravitySpeed = 0;
 
-
-
+this.newPos = function() {
+        this.gravitySpeed += this.gravity;
+    
+        e.clientY+= this.speedY + this.gravitySpeed;
+        this.hitBottom();
+    }
+    this.hitBottom = function() {
+        var rockbottom = myGameArea.canvas.height - this.height;
+        if (e.clientY > rockbottom) {
+            e.clientY = rockbottom;
+            this.gravitySpeed = -(this.gravitySpeed * this.bounce);
+        }
+    }
+}
 
  /*window.setInterval(
      function () {
