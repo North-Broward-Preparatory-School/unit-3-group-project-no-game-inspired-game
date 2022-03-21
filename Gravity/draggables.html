@@ -27,6 +27,15 @@ body {background-color: rgb(0, 0, 0);}
   background-color: #ffffff;
   color: #fff;
 }
+#mydiv2{
+  color: #808080;
+  background-color:grey;
+  z-index:10;
+  position: absolute;
+  text-align: center;
+}
+
+
 </style>
 <body>
 
@@ -39,11 +48,14 @@ body {background-color: rgb(0, 0, 0);}
   <p></p>
   <p></p>
   <p></p>
+ 
 </div>
+
+<div id="mydiv2"><p>......</p><p>......</p></div>
 
 <script>
 
-  
+var obstacle = "mydiv2"
 //Make the DIV element draggagle:
 dragElement(document.getElementById("mydiv"));
 
@@ -102,11 +114,28 @@ function gravHope (){
 function createBoulder (){
   window.setInterval(
      function () {
-      myGamePiece = new component(30, 30, "red", randomY, randomX);
+     genBoulder 
 
          
 
      }, 1000);
+
+}
+document.body.onload = genBoulder;
+
+function genBoulder () {
+  // create a new div element
+  const newDiv = document.createElement("Boulder");
+
+  // and give it some content
+  const newContent = document.createTextNode("Hi there and greetings!");
+
+  // add the text node to the newly created div
+  newDiv.appendChild(newContent);
+
+  // add the newly created element and its content into the DOM
+  const currentDiv = document.getElementById("div1");
+  document.body.insertBefore(newDiv, currentDiv);
 }
 randomY = Math.floor((Math.random() * 100) + 1);
 randomX = Math.floor((Math.random() * 100) + 1);
